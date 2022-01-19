@@ -5,21 +5,19 @@ const app = require("../server");
 const myModule = require("../myModules/myModule");
 
 describe("Testing myModule", () => {
-  it("should return current date", function () {
+  it("should return current date", () => {
     assert.equal(myModule.myDateTime(), "2022-1-19");
   });
 });
 
 describe("Array", () => {
-  describe("#indexOf()", function () {
-    it("should return -1 when the value is not present", function () {
-      assert.equal([1, 2, 3].indexOf(4), -1);
-    });
+  it("should return -1 when the value is not present", () => {
+    assert.equal([1, 2, 3].indexOf(4), -1);
   });
 });
 
 describe("GET /", () => {
-  it("it should has status code 200", function (done) {
+  it("it should has status code 200", (done) => {
     supertest(app)
       .get("/")
       .expect(200)
@@ -55,7 +53,7 @@ describe("GET /", () => {
 });*/
 
 describe("GET /users", () => {
-  it("it should has status code 200", function (done) {
+  it("it should has status code 200", (done) => {
     supertest(app)
       .get("/users")
       .expect(200)
@@ -67,7 +65,7 @@ describe("GET /users", () => {
 });
 
 describe("some async tests", () => {
-  it("can do async work", function (done) {
+  it("can do async work", (done) => {
     console.log("done async job");
     setTimeout(function () {
       done();
