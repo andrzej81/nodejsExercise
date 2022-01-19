@@ -22,6 +22,18 @@ describe("GET /", function () {
   });
 });
 
+describe("GET /", function () {
+  it("it should has status code 200", function (done) {
+    supertest(app)
+      .get("/users")
+      .expect(200)
+      .end(function (err, res) {
+        if (err) done(err);
+        done();
+      });
+  });
+});
+
 /*describe("POST /", function () {
   it("it should send json payload", function (done) {
     supertest(app)

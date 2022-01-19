@@ -33,6 +33,12 @@ app.get("/", (req, res, next) => {
   res.status(200).json({ status: "ok" });
 });
 
+app.get("/users", (req, res) => {
+  res.json({
+    status: true,
+  });
+});
+
 app.use((req, res, next) => {
   res.status(404).send({
     status: 404,
