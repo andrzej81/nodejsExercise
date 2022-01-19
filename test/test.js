@@ -13,7 +13,7 @@ describe("Testing myModule", () => {
 });
 
 describe("Testing FizzBuzz challange", () => {
-  it("5 devide by 5 so function should return Buzz word", () => {
+  it("for the multiples of five print Buzz word", () => {
     assert.equal(myModule.FizzBuzzNumbers(5), "Buzz");
   });
 });
