@@ -12,6 +12,12 @@ describe("Testing myModule", () => {
   });
 });
 
+describe("Testing FizzBuzz challange", () => {
+  it("5 devide by 5 so function should return Buzz word", () => {
+    assert.equal(myModule.FizzBuzzNumbers(5), "Buzz");
+  });
+});
+
 describe("Array", () => {
   it("should return -1 when the value is not present", () => {
     assert.equal([1, 2, 3].indexOf(4), -1);

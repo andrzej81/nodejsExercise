@@ -16,6 +16,7 @@ app.use((req, res, next) => {
 });
 
 console.log(myModule.myDateTime());
+console.log(myModule.FizzBuzzNumbers(5));
 
 const requireJsonContent = () => {
   return (req, res, next) => {
