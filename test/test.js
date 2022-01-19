@@ -4,6 +4,8 @@ const supertest = require("supertest");
 const app = require("../server");
 const myModule = require("../myModules/myModule");
 
+let url = "http://localhost:3000";
+
 describe("Testing myModule", () => {
   it("should return current date", () => {
     assert.equal(myModule.myDateTime(), "2022-1-19");
@@ -29,7 +31,7 @@ describe("GET /", () => {
   //using request instead supertest
 
   it("responds with JSON message { status: ok }", (done) => {
-    request("http://localhost:3000", function (err, response, body) {
+    request(url, (err, response, body) => {
       if (err) done(err);
 
       var payload = JSON.parse(body);
@@ -38,19 +40,6 @@ describe("GET /", () => {
     });
   });
 });
-
-//using request instead supertest
-/*describe("Server GET / respond for 200", () => {
-  it("responds with JSON message { status: ok }", (done) => {
-    request("http://localhost:3000", function (err, response, body) {
-      if (err) done(err);
-
-      var payload = JSON.parse(body);
-      assert.equal(payload, '{ status: "ok1" }');
-      done();
-    });
-  });
-});*/
 
 describe("GET /users", () => {
   it("it should has status code 200", (done) => {
@@ -72,18 +61,6 @@ describe("some async tests", () => {
     }, 1000);
   });
 });
-
-/*describe("POST /", function () {
-  it("it should send json payload", function (done) {
-    supertest(app)
-      .post("/")
-      .send({ id: 1 })
-      .then((response) => {
-        // Check the response data
-        expect(response.body).toBe({ id: 1 });
-      });
-  });
-});*/
 
 describe("Some module", () => {
   //group uni tests
