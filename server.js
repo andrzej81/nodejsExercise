@@ -6,6 +6,11 @@ const app = express();
 // application level middleware
 app.use(myCustomeMiddleware.LoggerMiddleware);
 
+app.use((req, res, next) => {
+  console.log("Next Middleware");
+  next();
+});
+
 const requireJsonContent = () => {
   return (req, res, next) => {
     if (req.headers["content-type"] !== "application/json") {
