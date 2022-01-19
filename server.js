@@ -27,10 +27,10 @@ app.post("/", requireJsonContent(), (req, res, next) => {
 });
 
 app.get("/", (req, res, next) => {
-  res.status(200);
+  //res.status(200);
   //res.sendStatus(200);
   //res.send("Welcome Home");
-  //res.status(200).json({ status: "ok" });
+  res.status(200).json({ status: "ok" });
 });
 
 app.use((req, res, next) => {
