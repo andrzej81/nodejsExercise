@@ -34,16 +34,23 @@ describe("GET /", () => {
         done();
       });
   });
-  //using request instead supertest
 
-  it("responds with JSON message { status: ok }", (done) => {
+  //using request instead supertest
+  /*it("responds with JSON message { status: ok }", (done) => {
     request(url, (err, response, body) => {
       if (err) done(err);
 
       var payload = JSON.parse(body);
-      assert.equal(payload, '{ status: "ok" }');
+      console.log(payload);
+      let expectvalue = '{"status":"ok"}';
+      assert.equal(payload, expectvalue);
       done();
     });
+  });*/
+
+  //using supertest
+  it("Responds with " + '{"status":"ok"}', (done) => {
+    supertest(app).get("/").expect(200).expect('{"status":"ok"}').end(done);
   });
 });
 
