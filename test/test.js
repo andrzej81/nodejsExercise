@@ -2,7 +2,10 @@ var assert = require("assert");
 const supertest = require("supertest");
 const app = require("../server");
 
-describe("Array", function () {
+var request = require("request");
+var assert = require("assert");
+
+describe("Array", () => {
   describe("#indexOf()", function () {
     it("should return -1 when the value is not present", function () {
       assert.equal([1, 2, 3].indexOf(4), -1);
@@ -10,7 +13,7 @@ describe("Array", function () {
   });
 });
 
-describe("GET /", function () {
+describe("GET /", () => {
   it("it should has status code 200", function (done) {
     supertest(app)
       .get("/")
@@ -20,9 +23,33 @@ describe("GET /", function () {
         done();
       });
   });
+  //using request instead supertest
+
+  it("responds with JSON message { status: ok }", (done) => {
+    request("http://localhost:3000", function (err, response, body) {
+      if (err) done(err);
+
+      var payload = JSON.parse(body);
+      assert.equal(payload, '{ status: "ok" }');
+      done();
+    });
+  });
 });
 
-describe("GET /", function () {
+//using request instead supertest
+/*describe("Server GET / respond for 200", () => {
+  it("responds with JSON message { status: ok }", (done) => {
+    request("http://localhost:3000", function (err, response, body) {
+      if (err) done(err);
+
+      var payload = JSON.parse(body);
+      assert.equal(payload, '{ status: "ok1" }');
+      done();
+    });
+  });
+});*/
+
+describe("GET /users", () => {
   it("it should has status code 200", function (done) {
     supertest(app)
       .get("/users")
@@ -31,6 +58,15 @@ describe("GET /", function () {
         if (err) done(err);
         done();
       });
+  });
+});
+
+describe("some async tests", () => {
+  it("can do async work", function (done) {
+    console.log("done async job");
+    setTimeout(function () {
+      done();
+    }, 1000);
   });
 });
 
@@ -46,14 +82,14 @@ describe("GET /", function () {
   });
 });*/
 
-/*describe("Some module", function () {
+describe("Some module", () => {
   //group uni tests
-  it("does some thing", function () {
-    assert(someModule.doesSomeThing()); //unit test
+  it("does some thing", () => {
+    //assert(someModule.doesSomeThing()); //unit test
   });
-});*/
+});
 
-describe("My feature", function () {
+/*describe("My feature", function () {
   before("optional description", function () {
     console.log("before test run");
   });
@@ -81,4 +117,4 @@ describe("My feature", function () {
 
     it("does another thing", function () {});
   });
-});
+});*/
