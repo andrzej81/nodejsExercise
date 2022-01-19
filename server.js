@@ -1,16 +1,18 @@
-const myCustomeMiddleware = require("./myModules/myMiddleware");
+const myCustomeMiddleware1 = require("./myModules/myMiddleware");
+const myCustomeMiddleware2 = require("./myModules/myMiddleware2");
 
 const express = require("express");
 const app = express();
 
 // application level middleware
-app.use(myCustomeMiddleware.LoggerMiddleware);
+app.use(myCustomeMiddleware1.LoggerMiddleware);
+
+app.use(myCustomeMiddleware2.LoggerMiddleware2);
 
 app.use((req, res, next) => {
-  console.log("Next Middleware");
+  console.log("Next Middleware3");
   next();
 });
-
 const requireJsonContent = () => {
   return (req, res, next) => {
     if (req.headers["content-type"] !== "application/json") {
