@@ -1,12 +1,10 @@
-var assert = require("assert");
+const request = require("request");
+const assert = require("assert");
 const supertest = require("supertest");
 const app = require("../server");
-var myModule = require("../myModules/myModule");
+const myModule = require("../myModules/myModule");
 
-var request = require("request");
-var assert = require("assert");
-
-describe("Test myModule", () => {
+describe("Testing myModule", () => {
   it("should return current date", function () {
     assert.equal(myModule.myDateTime(), "2022-1-19");
   });
