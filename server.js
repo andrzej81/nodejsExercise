@@ -1,3 +1,4 @@
+const myModule = require("./myModules/myModule.js");
 const myCustomeMiddleware1 = require("./myModules/myMiddleware");
 const myCustomeMiddleware2 = require("./myModules/myMiddleware2");
 
@@ -13,6 +14,9 @@ app.use((req, res, next) => {
   console.log("Next Middleware3");
   next();
 });
+
+console.log(myModule.myDateTime());
+
 const requireJsonContent = () => {
   return (req, res, next) => {
     if (req.headers["content-type"] !== "application/json") {

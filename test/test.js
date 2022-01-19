@@ -1,9 +1,16 @@
 var assert = require("assert");
 const supertest = require("supertest");
 const app = require("../server");
+var myModule = require("../myModules/myModule");
 
 var request = require("request");
 var assert = require("assert");
+
+describe("Test myModule", () => {
+  it("should return current date", function () {
+    assert.equal(myModule.myDateTime(), "2022-1-19");
+  });
+});
 
 describe("Array", () => {
   describe("#indexOf()", function () {
